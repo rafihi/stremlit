@@ -1,11 +1,6 @@
 import streamlit as st
-import pandas as pd
-import plotly.graph_objects as go
 
-#  Local URL: http://localhost:8501
-#  Network URL: http://192.168.33.10:8501
-
-st.title( "stremlit try:sunglasses:")
+st.title( "stremlit try: sunglasses:")
 
 st.write("Rafi Hirsch")
 
