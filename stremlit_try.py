@@ -17,7 +17,7 @@ p, div, input, label, h1, h2, h3, h4, h5, h6 {
 
 st.title( "רמת ההשכלה בישראל")
 
-st.write("רפאל הירש 06.01.25")
+st.write("רפאל הירש")
 st.write("")
 st.write("")
 
