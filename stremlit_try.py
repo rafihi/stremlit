@@ -67,3 +67,31 @@ with col2:
 
 
 
+
+
+#יורדים
+flourish_embed_code2 = """<div class="flourish-embed flourish-bar-chart-race" data-src="visualisation/21049406"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/21049406/thumbnail" width="100%" alt="bar-chart-race visualization" /></noscript></div>"""
+#עולים
+flourish_embed_code1 = """<div class="flourish-embed flourish-chart" data-src="visualisation/21049878"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/21049878/thumbnail" width="100%" alt="chart visualization" /></noscript></div>"""
+
+
+
+
+# Create two columns
+col1, col2 = st.columns(2)
+
+# Display the first chart in the first column
+with col1:
+    st.subheader("השכלת עולים לפי שנת עלייה")
+    st.components.v1.html(flourish_embed_code1, height=500)
+
+# Display the second chart in the second column
+with col2:
+    st.subheader("השכלת יורדים לפי שנה")
+    st.components.v1.html(flourish_embed_code2, height=500)
+
+
+
+
+
+
