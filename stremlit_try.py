@@ -38,7 +38,7 @@ st.write("")
 #לפי פיקוח
 st.subheader("השכלה לפי פיקוח ממלכתי/דתי/חרדי ")
 flourish_embed_code = """<div class="flourish-embed flourish-chart" data-src="visualisation/21046767"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/21046767/thumbnail" width="100%" alt="chart visualization" /></noscript></div>"""
-st.components.v1.html(flourish_embed_code, height=600)
+st.components.v1.html(flourish_embed_code, height=650)
 
 #השכלת אם 
 flourish_embed_code1 = """<div class="flourish-embed flourish-sankey" data-src="visualisation/21049208"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/21049208/thumbnail" width="100%" alt="sankey visualization" /></noscript></div>"""
@@ -57,12 +57,12 @@ col1, col2 = st.columns(2)
 # Display the first chart in the first column
 with col1:
     st.subheader("השכלה לפי השכלת אם")
-    st.components.v1.html(flourish_embed_code1, height=500)
+    st.components.v1.html(flourish_embed_code1, height=650)
 
 # Display the second chart in the second column
 with col2:
     st.subheader("השכלה לפי השכלת אב")
-    st.components.v1.html(flourish_embed_code2, height=500)
+    st.components.v1.html(flourish_embed_code2, height=650)
 
 
 
@@ -83,12 +83,12 @@ col1, col2 = st.columns(2)
 # Display the first chart in the first column
 with col1:
     st.subheader("השכלת עולים לפי שנת עלייה")
-    st.components.v1.html(flourish_embed_code1, height=500)
+    st.components.v1.html(flourish_embed_code1, height=650)
 
 # Display the second chart in the second column
 with col2:
     st.subheader("השכלת יורדים לפי שנה")
-    st.components.v1.html(flourish_embed_code2, height=500)
+    st.components.v1.html(flourish_embed_code2, height=650)
 
 
 
