@@ -1,10 +1,8 @@
 import streamlit as st
 import pandas as pd
 from PIL import Image
-from geopy.geocoders import Nominatim
 import folium
 from streamlit_folium import st_folium
-import urllib.parse
 
 #ראשון : הגדרות העמוד
 st.set_page_config(initial_sidebar_state='expanded',layout="wide")
