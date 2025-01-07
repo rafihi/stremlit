@@ -1,8 +1,8 @@
 import streamlit as st
 import pandas as pd
-from PIL import Image
 import folium
 from streamlit_folium import st_folium
+
 
 #ראשון : הגדרות העמוד
 st.set_page_config(initial_sidebar_state='expanded',layout="wide")
@@ -73,24 +73,19 @@ if page == 'רמת השכלה לפי הורה':
 
 
     #st.header("השכלה לפי השכלת אב")
-    #flourish pikuch
+    #flourish 
     flourish_embed_code2 = """<div class="flourish-embed flourish-sankey" data-src="visualisation/21048102"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/21048102/thumbnail" width="100%" alt="sankey visualization" /></noscript></div>"""
-    #st.components.v1.html(flourish_embed_code2, height=600)
 
-    # st.header("השכלת הורים")
-
-    # Create two columns
-    col1, col2 = st.columns(2)
-
+ 
     # Display the first chart in the first column
-    with col1:
-        st.subheader("👩‍👦‍👦  _  השכלה לפי השכלת אם")
-        st.components.v1.html(flourish_embed_code1, height=650)
+    
+    st.subheader("👩‍👦‍👦  _  השכלה לפי השכלת אם")
+    st.components.v1.html(flourish_embed_code1, height=650)
 
     # Display the second chart in the second column
-    with col2:
-        st.subheader("👨  השכלה לפי השכלת אב")
-        st.components.v1.html(flourish_embed_code2, height=650)
+    
+    st.subheader("👨  השכלה לפי השכלת אב")
+    st.components.v1.html(flourish_embed_code2, height=650)
 
 #עמוד 3
 if page == 'מגמות רמת השכלה עולים ויורדים':
