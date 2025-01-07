@@ -36,11 +36,6 @@ st.markdown("""
         [data-testid="stSidebar"] .stRadio > div {
             gap: 10px; /* Adjust the spacing between radio options */
         }
-
-        /* Optional: Add padding to sidebar content */
-        [data-testid="stSidebar"] {
-            padding: 10px;
-        }
     </style>
 """, unsafe_allow_html=True)
 
