@@ -40,7 +40,12 @@ st.markdown("""
 #sidebar
 st.sidebar.title("תוכן עניינים")
 page = st.sidebar.radio(" ",[" רמת השכלה מפורטת כלל האוכלוסיה ","רמת השכלה לפי הורה","מגמות רמת השכלה עולים ויורדים","השכלה לפי פיקוח","מפת ישראל - השכלה לפי ישוב"])
-st.sidebar.button('כפתור (לא עושה כלום)')
+st.sidebar.write('    ')
+st.sidebar.write('    ')
+st.sidebar.write('    ')
+st.sidebar.write('    ')
+a =  ':blue[רפאל הירש]'
+st.sidebar.write(f'יוצר: {a}')
 
 
 #עמוד 1
