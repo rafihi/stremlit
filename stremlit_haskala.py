@@ -126,34 +126,6 @@ if page == 'השכלה לפי פיקוח':
     st.markdown("---")
     flourish_embed_code = """<div class="flourish-embed flourish-chart" data-src="visualisation/21046767"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/21046767/thumbnail" width="100%" alt="chart visualization" /></noscript></div>"""
     st.components.v1.html(flourish_embed_code, height=650)
-    #try loti
-    def load_lottieurl(url: str):
-        response = requests.get(url)
-        if response.status_code != 200:
-            return None
-        return response.json()
-
-    st.title("Lottie Animation in Streamlit")
-
-    # Load Lottie animation
-    lottie_url = "https://lottie.host/embed/160dbb3c-d00e-4876-9a97-0aab220dc69a/HFzOlD6Ljc.lottie"
-    lottie_animation = load_lottieurl(lottie_url)
-
-    # Display the animation
-
-    if lottie_animation:
-        st_lottie(
-        lottie_animation,
-        speed=1,
-        reverse=False,
-        loop=True,
-        quality="high",
-        height=400,
-        width=400,
-        key="lottie"
-            )
-    else:
-        st.error("Failed to load Lottie animation.")
 
 #טעינת נתונים למפה
 
