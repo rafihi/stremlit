@@ -153,7 +153,7 @@ if page == 'השכלה לפי פיקוח':
         key="lottie"
             )
     else:
-    st.error("Failed to load Lottie animation.")
+        st.error("Failed to load Lottie animation.")
 
 #טעינת נתונים למפה
 
