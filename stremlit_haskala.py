@@ -235,6 +235,6 @@ if page == 'מפת ישראל - השכלה לפי ישוב':
         ).add_to(m)
 
 #st_folium(m, width=700, height=500)
-    st_folium(m, width=1200, height=1000)
+    st_folium(m, width=1400, height=1000)
 
 
