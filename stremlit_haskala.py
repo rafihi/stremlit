@@ -2,9 +2,9 @@ import streamlit as st
 import pandas as pd
 import folium
 from streamlit_folium import st_folium
-from streamlit_lottie import st_lottie
-import requests
-import json 
+#from streamlit_lottie import st_lottie
+#import requests
+#import json 
 
 
 #ראשון : הגדרות העמוד
