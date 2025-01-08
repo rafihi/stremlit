@@ -126,6 +126,30 @@ if page == 'השכלה לפי פיקוח':
     st.markdown("---")
     flourish_embed_code = """<div class="flourish-embed flourish-chart" data-src="visualisation/21046767"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/21046767/thumbnail" width="100%" alt="chart visualization" /></noscript></div>"""
     st.components.v1.html(flourish_embed_code, height=650)
+    #try loti
+    def load_lottieurl(url: str):
+    response = requests.get(url)
+    if response.status_code != 200:
+        return None
+    return response.json()
+
+    st.title("Lottie Animation in Streamlit")
+
+    # Load Lottie animation
+    lottie_url = "https://assets1.lottiefiles.com/packages/lf20_touohxv0.json"
+    lottie_animation = load_lottieurl(lottie_url)
+
+    # Display the animation
+
+    st_lottie(
+        lottie_animation,
+        speed=1,
+        reverse=False,
+        loop=True,
+        quality="high",
+        height=400,
+        width=400,
+        key="lottie")
 
 #טעינת נתונים למפה
 
@@ -237,5 +261,7 @@ if page == 'מפת ישראל - השכלה לפי ישוב':
 
 #st_folium(m, width=700, height=500)
     st_folium(m, width=1400, height=1000)
+
+
 
 
