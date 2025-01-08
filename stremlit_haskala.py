@@ -85,12 +85,12 @@ if page == 'רמת השכלה לפי הורה':
     # Display the first chart in the first column
     
     st.subheader("👩‍👦‍👦  _  השכלה לפי השכלת אם")
-    st.components.v1.html(flourish_embed_code1, height=650)
+    st.components.v1.html(flourish_embed_code1, height=750)
 
     # Display the second chart in the second column
     
     st.subheader("👨  השכלה לפי השכלת אב")
-    st.components.v1.html(flourish_embed_code2, height=650)
+    st.components.v1.html(flourish_embed_code2, height=750)
 
 #עמוד 3
 if page == 'מגמות רמת השכלה עולים ויורדים':
