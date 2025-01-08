@@ -1,8 +1,2 @@
 streamlit
-pandas
-folium
-streamlit-folium
-Pillow
-streamlit_lottie 
-requests
-json
+
