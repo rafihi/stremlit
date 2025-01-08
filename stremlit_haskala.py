@@ -128,9 +128,9 @@ if page == 'השכלה לפי פיקוח':
     st.components.v1.html(flourish_embed_code, height=650)
     #try loti
     def load_lottieurl(url: str):
-    response = requests.get(url)
-    if response.status_code != 200:
-        return None
+        response = requests.get(url)
+        if response.status_code != 200:
+            return None
     return response.json()
 
     st.title("Lottie Animation in Streamlit")
@@ -141,7 +141,8 @@ if page == 'השכלה לפי פיקוח':
 
     # Display the animation
 
-    st_lottie(
+    if lottie_animation:
+        st_lottie(
         lottie_animation,
         speed=1,
         reverse=False,
@@ -149,7 +150,10 @@ if page == 'השכלה לפי פיקוח':
         quality="high",
         height=400,
         width=400,
-        key="lottie")
+        key="lottie"
+            )
+    else:
+    st.error("Failed to load Lottie animation.")
 
 #טעינת נתונים למפה
 
