@@ -136,7 +136,7 @@ if page == 'השכלה לפי פיקוח':
     st.title("Lottie Animation in Streamlit")
 
     # Load Lottie animation
-    lottie_url = "https://assets1.lottiefiles.com/packages/lf20_touohxv0.json"
+    lottie_url = "https://lottie.host/embed/160dbb3c-d00e-4876-9a97-0aab220dc69a/HFzOlD6Ljc.lottie"
     lottie_animation = load_lottieurl(lottie_url)
 
     # Display the animation
