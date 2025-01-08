@@ -234,7 +234,7 @@ if page == 'מפת ישראל - השכלה לפי ישוב':
             icon=folium.Icon(color="blue", icon="user"),
         ).add_to(m)
 
-
-    st_folium(m, width=700, height=500)
+#st_folium(m, width=700, height=500)
+    st_folium(m, width=1200, height=1000)
 
 
