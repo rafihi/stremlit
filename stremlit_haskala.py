@@ -131,7 +131,7 @@ if page == 'השכלה לפי פיקוח':
         response = requests.get(url)
         if response.status_code != 200:
             return None
-    return response.json()
+        return response.json()
 
     st.title("Lottie Animation in Streamlit")
 
