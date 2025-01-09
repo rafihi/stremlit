@@ -103,8 +103,13 @@ if page == 'רמת השכלה לפי הורה':
         st.components.v1.html(flourish_embed_code11, height=650)
     with col2:
         st.components.v1.html(flourish_embed_code12, height=650)
+    #השכלת אב אחוזים מקובץ
     flourish_embed_code13 = ("""<div class="flourish-embed flourish-pictogram" data-src="visualisation/21092416"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/21092416/thumbnail" width="100%" alt="pictogram visualization" /></noscript></div>""")
     st.components.v1.html(flourish_embed_code13, height=650)
+    #השכלת אם אחוזים מקובץ
+    flourish_embed_code14 = ("""<div class="flourish-embed flourish-pictogram" data-src="visualisation/21097218"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/21097218/thumbnail" width="100%" alt="pictogram visualization" /></noscript></div>""")
+    st.components.v1.html(flourish_embed_code14, height=650)
+
 
 #עמוד 3
 if page == 'מגמות רמת השכלה עולים ויורדים':
