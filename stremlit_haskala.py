@@ -2,10 +2,8 @@ import streamlit as st
 import pandas as pd
 import folium
 from streamlit_folium import st_folium
-#from streamlit_lottie import st_lottie
-#import requests
+# from streamlit_lottie import st_lottie
 #import json 
-
 
 #ראשון : הגדרות העמוד
 st.set_page_config(initial_sidebar_state='expanded',layout="wide")
@@ -48,6 +46,26 @@ st.sidebar.write('    ')
 st.sidebar.write('    ')
 st.sidebar.write('    ')
 a =  ':blue[רפאל הירש]'
+
+
+# lottie_url = 'https://assets5.lottiefiles.com/packages/lf20_V9t630.json'
+
+# st_lottie(lottie_url, 
+#           # change the direction of our animation 
+#           reverse=True, 
+#           # height and width of animation 
+#           height=20,   
+#           width=20, 
+#           # speed of animation 
+#           speed=1,   
+#           # means the animation will run forever like a gif, and not as a still image 
+#           loop=True,   
+#           # quality of elements used in the animation, other values are "low" and "medium" 
+#           quality='high', 
+#            # THis is just to uniquely identify the animation 
+#           key='Car' 
+#           ) 
+# st.sidebar.color_picker("תבחר צבע", "#00f900")
 st.sidebar.write(f'יוצר: {a}')
 
 
@@ -74,26 +92,19 @@ if page == 'רמת השכלה לפי הורה':
     with st.expander('הגדרות והסברים'):
      st.write("")
     st.markdown("---") 
+    st.subheader('קשר בין רמת ההשכלה לבין רמת ההשכלה של ההורה')
 
            #השכלת אם 
-    flourish_embed_code1 = """<div class="flourish-embed flourish-sankey" data-src="visualisation/21049208"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/21049208/thumbnail" width="100%" alt="sankey visualization" /></noscript></div>"""
-    #st.components.v1.html(flourish_embed_code1, height=600)
+    flourish_embed_code11 = ("""<div class="flourish-embed flourish-scatter" data-src="visualisation/21091340"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/21091340/thumbnail" width="100%" alt="scatter visualization" /></noscript></div>""")
+    flourish_embed_code12 = ("""<div class="flourish-embed flourish-scatter" data-src="visualisation/21080916"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/21080916/thumbnail" width="100%" alt="scatter visualization" /></noscript></div>""")
 
-
-    #st.header("השכלה לפי השכלת אב")
-    #flourish 
-    flourish_embed_code2 = """<div class="flourish-embed flourish-sankey" data-src="visualisation/21048102"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/21048102/thumbnail" width="100%" alt="sankey visualization" /></noscript></div>"""
-
- 
-    # Display the first chart in the first column
-    
-    st.subheader("👩‍👦‍👦  _  השכלה לפי השכלת אם")
-    st.components.v1.html(flourish_embed_code1, height=1500)
-
-    # Display the second chart in the second column
-    
-    st.subheader("👨  השכלה לפי השכלת אב")
-    st.components.v1.html(flourish_embed_code2, height=1500)
+    col1, col2 = st.columns(2)
+    with col1:
+        st.components.v1.html(flourish_embed_code11, height=650)
+    with col2:
+        st.components.v1.html(flourish_embed_code12, height=650)
+    flourish_embed_code13 = ("""<div class="flourish-embed flourish-pictogram" data-src="visualisation/21092416"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/21092416/thumbnail" width="100%" alt="pictogram visualization" /></noscript></div>""")
+    st.components.v1.html(flourish_embed_code13, height=650)
 
 #עמוד 3
 if page == 'מגמות רמת השכלה עולים ויורדים':
@@ -329,34 +340,6 @@ if page == 'מפת ישראל - השכלה לפי ישוב':
 
 #st_folium(m, width=700, height=500)
     st_folium(m, width=1400, height=1000)
-
-
-# url = requests.get( 
-#     "https://assets2.lottiefiles.com/packages/lf20_mDnmhAgZkb.json") 
-# url_json = dict() 
-# if url.status_code == 200: 
-#     url_json = url.json() 
-# else: 
-#     print("Error in URL") 
-  
-  
-# st.title("Adding Lottie Animation in Streamlit WebApp") 
-  
-# st_lottie(url_json, 
-#           # change the direction of our animation 
-#           reverse=True, 
-#           # height and width of animation 
-#           height=400,   
-#           width=400, 
-#           # speed of animation 
-#           speed=1,   
-#           # means the animation will run forever like a gif, and not as a still image 
-#           loop=True,   
-#           # quality of elements used in the animation, other values are "low" and "medium" 
-#           quality='high', 
-#            # THis is just to uniquely identify the animation 
-#           key='Car' 
-#           ) 
 
 
 
