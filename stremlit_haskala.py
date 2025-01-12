@@ -76,6 +76,8 @@ if page == '***רמת השכלה מפורטת כלל האוכלוסיה***':
     flourish_embed_code = """<div class="flourish-embed flourish-chart" data-src="visualisation/21053009"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/21053009/thumbnail" width="100%" alt="chart visualization" /></noscript></div>"""
 
     st.subheader("גילאי 52-66 בשנים **8002 - 2202** ##")
+    flourish_embed_code55 = """<div class="flourish-embed flourish-number-ticker" data-src="visualisation/21131573"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/21131573/thumbnail" width="100%" alt="number-ticker visualization" /></noscript></div>"""
+    st.components.v1.html(flourish_embed_code55, height=150)
     with st.expander('הגדרות והסברים'):
      st.write("""
                     
