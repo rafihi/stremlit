@@ -3,7 +3,7 @@ import pandas as pd
 import folium
 from streamlit_folium import st_folium
 # from streamlit_lottie import st_lottie
-#import json 
+# import json 
 
 #ראשון : הגדרות העמוד
 st.set_page_config(initial_sidebar_state='expanded',layout="wide")
@@ -31,49 +31,50 @@ p, div, input, label, h1, h2, h3, h4, h5, h6 {
 #space out optins in radio sidebar
 st.markdown("""
     <style>
-        /* Style the sidebar radio buttons */
         [data-testid="stSidebar"] .stRadio > div {
-            gap: 10px; /* Adjust the spacing between radio options */
+            gap: 10px; /* Adjust spacing between options */
         }
     </style>
 """, unsafe_allow_html=True)
 
+#background-color: #e3e9eb;
+st.markdown("""
+<style>
+    [data-testid=stSidebar] {
+        background-image: url('https://images.unsplash.com/photo-1516979187457-637abb4f9353?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGVkdWNhdGlvbnxlbnwwfHwwfHx8MA%3D%3D');
+        background-size: cover; /* Ensures the image covers the sidebar area */
+        background-position: center; /* Centers the image */
+        background-repeat: no-repeat; /* Prevents image tiling */
+    }
+</style>
+""", unsafe_allow_html=True)
+    
 #sidebar
 st.sidebar.title("תוכן עניינים")
-page = st.sidebar.radio(" ",[" רמת השכלה מפורטת כלל האוכלוסיה ","רמת השכלה לפי הורה","מגמות רמת השכלה עולים ויורדים","השכלה לפי פיקוח","מפת ישראל - השכלה לפי ישוב"])
-st.sidebar.write('    ')
-st.sidebar.write('    ')
-st.sidebar.write('    ')
-st.sidebar.write('    ')
-a =  ':blue[רפאל הירש]'
+page = st.sidebar.radio(" ",["***רמת השכלה מפורטת כלל האוכלוסיה***","***רמת השכלה לפי הורה***","***רמת השכלה עולים ויורדים***","***השכלה לפי פיקוח***","***מפת ישראל - השכלה לפי ישוב***"])
+st.sidebar.write('#')
+st.sidebar.write('#')
 
 
-# lottie_url = 'https://assets5.lottiefiles.com/packages/lf20_V9t630.json'
 
-# st_lottie(lottie_url, 
-#           # change the direction of our animation 
-#           reverse=True, 
-#           # height and width of animation 
-#           height=20,   
-#           width=20, 
-#           # speed of animation 
-#           speed=1,   
-#           # means the animation will run forever like a gif, and not as a still image 
-#           loop=True,   
-#           # quality of elements used in the animation, other values are "low" and "medium" 
-#           quality='high', 
-#            # THis is just to uniquely identify the animation 
-#           key='Car' 
-#           ) 
-# st.sidebar.color_picker("תבחר צבע", "#00f900")
-st.sidebar.write(f'יוצר: {a}')
+b = 'רפאל הירש'
+
+st.sidebar.markdown(
+    f"""
+    <div style="background-color:  #ffffff ; padding: 10px; border-radius: 20px; text-align: center; color: black;">
+        יוצר: {b}
+    </div>
+    """,
+    unsafe_allow_html=True)
+
 
 
 #עמוד 1
-if page == ' רמת השכלה מפורטת כלל האוכלוסיה ':
+if page == '***רמת השכלה מפורטת כלל האוכלוסיה***':
+    st.header(" רמת השכלה מפורטת כלל האוכלוסיה")
     #מגמות כלל האוכלוסיה
     flourish_embed_code = """<div class="flourish-embed flourish-chart" data-src="visualisation/21053009"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/21053009/thumbnail" width="100%" alt="chart visualization" /></noscript></div>"""
-    st.header(" רמת השכלה מפורטת כלל האוכלוסיה")
+
     st.subheader("גילאי 52-66 בשנים **8002 - 2202** ##")
     with st.expander('הגדרות והסברים'):
      st.write("""
@@ -87,7 +88,7 @@ if page == ' רמת השכלה מפורטת כלל האוכלוסיה ':
     st.components.v1.html(flourish_embed_code, height=650)
 
 #עמוד 2
-if page == 'רמת השכלה לפי הורה':
+if page == '***רמת השכלה לפי הורה***':
     st.header('רמת ההשכלה לפי רמת השכלת ההורה')
     with st.expander('הגדרות והסברים'):
      st.write("")
@@ -98,21 +99,34 @@ if page == 'רמת השכלה לפי הורה':
     flourish_embed_code11 = ("""<div class="flourish-embed flourish-scatter" data-src="visualisation/21091340"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/21091340/thumbnail" width="100%" alt="scatter visualization" /></noscript></div>""")
     flourish_embed_code12 = ("""<div class="flourish-embed flourish-scatter" data-src="visualisation/21080916"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/21080916/thumbnail" width="100%" alt="scatter visualization" /></noscript></div>""")
 
-    col1, col2 = st.columns(2)
-    with col1:
-        st.components.v1.html(flourish_embed_code11, height=650)
-    with col2:
-        st.components.v1.html(flourish_embed_code12, height=650)
-    #השכלת אב אחוזים מקובץ
+    if "show_graph" not in st.session_state:
+        st.session_state.show_graph = False
+
+    # Function to toggle graph visibility
+    def toggle_graph1():
+        st.session_state.show_graph = not st.session_state.show_graph
+
+    # Add a button to toggle the graph visibility
+    if st.button("מתאם", on_click=toggle_graph1):
+        pass
+
+    # Display the Flourish embed graph if the state is set to True
+    if st.session_state.show_graph:
+        col1, col2 = st.columns(2)
+        with col1:
+         st.components.v1.html(flourish_embed_code11, height=650)
+        with col2:
+         st.components.v1.html(flourish_embed_code12, height=650)
+    # #השכלת אב אחוזים מקובץ
     flourish_embed_code13 = ("""<div class="flourish-embed flourish-pictogram" data-src="visualisation/21092416"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/21092416/thumbnail" width="100%" alt="pictogram visualization" /></noscript></div>""")
     st.components.v1.html(flourish_embed_code13, height=650)
-    #השכלת אם אחוזים מקובץ
+    # #השכלת אם אחוזים מקובץ
     flourish_embed_code14 = ("""<div class="flourish-embed flourish-pictogram" data-src="visualisation/21097218"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/21097218/thumbnail" width="100%" alt="pictogram visualization" /></noscript></div>""")
     st.components.v1.html(flourish_embed_code14, height=650)
 
 
 #עמוד 3
-if page == 'מגמות רמת השכלה עולים ויורדים':
+if page == '***רמת השכלה עולים ויורדים***':
     st.header('השכלה של עולים ויורדים לפי שנים')
     with st.expander('הגדרות והסברים'):
      st.write("""יורדים מהארץ הינם יורדים חדשים שלא הופיעו בשנה הקודמת כיורדים. 
@@ -137,13 +151,14 @@ if page == 'מגמות רמת השכלה עולים ויורדים':
         st.subheader("השכלת יורדים לפי שנה")
         st.components.v1.html(flourish_embed_code2, height=650)
 
-if page == 'השכלה לפי פיקוח':
+if page == '***השכלה לפי פיקוח***':
     st.header('השכלה של בוגרי מערכת החינוך לפי סוג פיקוח')
     with st.expander('הגדרות והסברים'):
      st.write("")
     st.markdown("---")
     flourish_embed_code = """<div class="flourish-embed flourish-chart" data-src="visualisation/21046767"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/21046767/thumbnail" width="100%" alt="chart visualization" /></noscript></div>"""
     st.components.v1.html(flourish_embed_code, height=650)
+
 
 #טעינת נתונים למפה
 
@@ -313,16 +328,31 @@ data["Longitude"] = data["שם עיר"].map(lambda city: coordinates[city][1] if
 
 # Remove cities without coordinates
 data = data.dropna(subset=["Latitude", "Longitude"])
-
-if page == 'מפת ישראל - השכלה לפי ישוב':
+flourish_embed_code24 = ("""<div class="flourish-embed flourish-scatter" data-src="visualisation/14738347"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/14738347/thumbnail" width="100%" alt="scatter visualization" /></noscript></div>""")
+if page == '***מפת ישראל - השכלה לפי ישוב***':
     # Streamlit interface
     st.header("מפת ישראל - השכלה לפי ישוב")
     st.markdown("הקטע הזה מציג את מפת ישראל, המראה את ההשכלה לפי ישוב.")
 
+    if "show_graph" not in st.session_state:
+        st.session_state.show_graph = False
+
+    # Function to toggle graph visibility
+    def toggle_graph():
+        st.session_state.show_graph = not st.session_state.show_graph
+
+    # Add a button to toggle the graph visibility
+    if st.button("מתאם שנות לימוד ואחוז אקדמאים", on_click=toggle_graph):
+        pass
+
+    # Display the Flourish embed graph if the state is set to True
+    if st.session_state.show_graph:
+        st.components.v1.html(flourish_embed_code24, height=650)
+
 
     # Creating the map
     with st.expander('הגדרות והסברים'):
-     st.write("נכללו ערים מעל 000,02 תושבים")
+        st.write("נכללו ערים מעל 000,02 תושבים")
     st.markdown("---") 
     m = folium.Map(location=[31.0461, 34.8516], zoom_start=8)
 
@@ -343,7 +373,7 @@ if page == 'מפת ישראל - השכלה לפי ישוב':
             icon=folium.Icon(color="blue", icon="user"),
         ).add_to(m)
 
-#st_folium(m, width=700, height=500)
+
     st_folium(m, width=1400, height=1000)
 
 
