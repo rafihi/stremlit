@@ -2,8 +2,8 @@ import streamlit as st
 import pandas as pd
 import folium
 from streamlit_folium import st_folium
-# from streamlit_lottie import st_lottie
-# import json 
+import time
+
 
 #ראשון : הגדרות העמוד
 st.set_page_config(initial_sidebar_state='expanded',layout="wide")
@@ -56,6 +56,10 @@ st.sidebar.write('#')
 st.sidebar.write('#')
 
 
+# import streamlit.components.v1 as components
+# sss = """<div class="flourish-embed flourish-number-ticker" data-src="visualisation/21132982"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/21132982/thumbnail" width="100%" alt="number-ticker visualization" /></noscript></div>"""
+# with st.sidebar:
+#     components.html(sss, height=350)
 
 b = 'רפאל הירש'
 
@@ -76,6 +80,7 @@ if page == '***רמת השכלה מפורטת כלל האוכלוסיה***':
     flourish_embed_code = """<div class="flourish-embed flourish-chart" data-src="visualisation/21053009"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/21053009/thumbnail" width="100%" alt="chart visualization" /></noscript></div>"""
 
     st.subheader("גילאי 52-66 בשנים **8002 - 2202** ##")
+    #טיקר מספרים
     flourish_embed_code55 = """<div class="flourish-embed flourish-number-ticker" data-src="visualisation/21131573"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/21131573/thumbnail" width="100%" alt="number-ticker visualization" /></noscript></div>"""
     st.components.v1.html(flourish_embed_code55, height=150)
     with st.expander('הגדרות והסברים'):
@@ -125,6 +130,9 @@ if page == '***רמת השכלה לפי הורה***':
     # #השכלת אם אחוזים מקובץ
     flourish_embed_code14 = ("""<div class="flourish-embed flourish-pictogram" data-src="visualisation/21097218"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/21097218/thumbnail" width="100%" alt="pictogram visualization" /></noscript></div>""")
     st.components.v1.html(flourish_embed_code14, height=650)
+    st.subheader('רמת ההשכלה לפי מספר ילדים - 2202')
+    flourish_embed_code99 = ("""<div class="flourish-embed flourish-chart" data-src="visualisation/21186004"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/21186004/thumbnail" width="100%" alt="chart visualization" /></noscript></div>""")
+    st.components.v1.html(flourish_embed_code99, height=650)
 
 
 #עמוד 3
