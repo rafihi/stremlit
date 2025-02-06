@@ -450,7 +450,7 @@ def get_response(user_question):
             f"The user question: {user_question}"
         ])
         return response.text
-    except genai.api_core.exceptions.ResourceExhausted:
+    except:
         return "הגעת למגבלת השאלות המותרת .. נסה שוב בהמשך "
 
 
