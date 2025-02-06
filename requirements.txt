@@ -2,8 +2,6 @@ streamlit
 pandas
 folium
 streamlit-folium
-google.generativeai 
-pymupdf  
-os
+google-generativeai
+PyMuPDF
 requests
-io
