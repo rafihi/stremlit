@@ -2,7 +2,6 @@ import streamlit as st
 import pandas as pd
 import folium
 from streamlit_folium import st_folium
-import time
 import google.generativeai as genai
 import fitz  # PyMuPDF for extracting text from PDFs
 import os
@@ -452,7 +451,6 @@ def get_response(user_question):
         ])
         return response.text
     except genai.api_core.exceptions.ResourceExhausted:
-        time.sleep(15)  # Wait 10 seconds before retrying
         return "הגעת למגבלת השאלות המותרת .. נסה שוב בהמשך "
 
 
