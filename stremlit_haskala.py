@@ -451,16 +451,19 @@ def get_response(user_question):
         ])
         return response.text
     except:
-        return "הגעת למגבלת השאלות המותרת .. נסה שוב בהמשך "
+        return "הגעת למגבלת השאלות המותרת .. נסה שוב יותר מאוחר "
 
 
 if page == "***צ'אט בוט - מרשם השכלה***":
     st.header("צ'אט בוט - מרשם השכלה")
-    st.markdown(f"""בינה מלאכותית מבוססת נתוני מרשם ההשכלה כפי שפורסמו: """)
-    st.page_link(pdf_url, label="להודעה המלאה", icon= '🎓')
+    col1, col2 = st.columns(2)
+    with col1:
+         st.markdown(f"""בינה מלאכותית מבוססת נתוני מרשם ההשכלה כפי שפורסמו: """)
+    with col2:
+         st.page_link(pdf_url, label="להודעה המלאה", icon= '🎓')
     user_question = st.text_input("הקלד שאלה..")
     
-    if st.button("קבל תשובה "):
+    if st.button("קבל תשובה"):
         if user_question:
             with st.spinner("אנא המתן..."):
                 answer = get_response(user_question)  # Get AI response
