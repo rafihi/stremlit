@@ -3,6 +3,11 @@ import pandas as pd
 import folium
 from streamlit_folium import st_folium
 import time
+import google.generativeai as genai
+import fitz  # PyMuPDF for extracting text from PDFs
+import os
+import requests
+import io
 
 
 #ראשון : הגדרות העמוד
@@ -17,16 +22,16 @@ st.markdown("""
 body, html {
     direction: RTL;
     unicode-bidi: bidi-override;
-    text-align: right;
+    text-align: center;
 }
-p, div, input, label, h1, h2, h3, h4, h5, h6 {
+p, div, label, h1, h2, h3, h4, h6 {   
     direction: RTL;
     unicode-bidi: bidi-override;
     text-align: right;
 }
-
 </style>
 """, unsafe_allow_html=True)
+# i removed h5 and input
 
 #space out optins in radio sidebar
 st.markdown("""
@@ -51,7 +56,7 @@ st.markdown("""
     
 #sidebar
 st.sidebar.title("תוכן עניינים")
-page = st.sidebar.radio(" ",["***רמת השכלה מפורטת כלל האוכלוסיה***","***רמת השכלה לפי הורה***","***רמת השכלה עולים ויורדים***","***השכלה לפי פיקוח***","***מפת ישראל - השכלה לפי ישוב***"])
+page = st.sidebar.radio(" ",["***רמת השכלה מפורטת כלל האוכלוסיה***","***רמת השכלה לפי הורה***","***רמת השכלה עולים ויורדים***","***השכלה לפי פיקוח***","***מפת ישראל - השכלה לפי ישוב***","***צ'אט בוט - מרשם השכלה***"])
 st.sidebar.write('#')
 st.sidebar.write('#')
 
@@ -386,5 +391,83 @@ if page == '***מפת ישראל - השכלה לפי ישוב***':
 
     st_folium(m, width=1400, height=1000)
 
+#############################################################
 
+def extract_text_from_pdf(pdf_paths):
+    text = ""
+    for pdf_path in pdf_paths:
+        # Open the PDF using fitz.open, handle both paths and BytesIO objects
+        if isinstance(pdf_path, io.BytesIO):  # Check if it's a BytesIO object
+            try:
+                doc = fitz.open(stream=pdf_path.getvalue(), filetype="pdf")  # Open using the bytes and filetype
+            except fitz.FileDataError:
+                print(f"Skipping invalid PDF: {pdf_path}")  # Print a message for invalid PDFs
+                continue  # Move to the next PDF
+        else:
+            doc = fitz.open(pdf_path)  # Open using the file path if it's not a BytesIO object
+
+        for page in doc:
+            text += page.get_text("text") + "\n"
+    return text
+
+pdf_url = "https://www.cbs.gov.il/he/mediarelease/DocLib/2025/040/06_25_040b.pdf"
+
+response = requests.get(pdf_url)
+
+pdf_paths = []
+
+# Check if the request was successful and content type is PDF
+if response.status_code == 200 and response.headers.get('content-type') == 'application/pdf':
+    # Get the PDF content as bytes
+    pdf_content = response.content
+
+    # Create an in-memory file-like object using BytesIO
+    pdf_file = io.BytesIO(pdf_content)
+    pdf_paths.append(pdf_file)
+else:
+    print(f"Skipping URL: {pdf_url} (Status: {response.status_code}, Content-Type: {response.headers.get('content-type', 'Unknown')})")
+
+pdf_text = extract_text_from_pdf(pdf_paths)
+
+API_KEY = os.getenv("GEMINI_API_KEY", "AIzaSyCcbPr9UOv_ggP1M4xfEsHVQv7WWjCDy_o")
+genai.configure(api_key=API_KEY)
+
+# Initialize chat model
+model = genai.GenerativeModel("gemini-pro")
+
+
+
+# Convert DataFrame to a list of dictionaries
+city_data = data.to_dict(orient="records")
+
+
+
+def get_response(user_question):
+    try:
+        response = model.generate_content([
+            "You are an AI assistant answering based on provided Israel Education Register data.",
+            f"Here is the city data: {city_data}",
+            f"Here is the general education data: {pdf_text}",
+            f"The user question: {user_question}"
+        ])
+        return response.text
+    except genai.api_core.exceptions.ResourceExhausted:
+        time.sleep(15)  # Wait 10 seconds before retrying
+        return "הגעת למגבלת השאלות המותרת .. נסה שוב בהמשך "
+
+
+if page == "***צ'אט בוט - מרשם השכלה***":
+    st.header("צ'אט בוט - מרשם השכלה")
+    st.markdown(f"""בינה מלאכותית מבוססת נתוני מרשם ההשכלה כפי שפורסמו: """)
+    st.page_link(pdf_url, label="להודעה המלאה", icon= '🎓')
+    user_question = st.text_input("הקלד שאלה..")
+    
+    if st.button("קבל תשובה "):
+        if user_question:
+            with st.spinner("אנא המתן..."):
+                answer = get_response(user_question)  # Get AI response
+            st.write("#### מרשם השכלה:")
+            st.markdown(f'##### {answer}')  # Use markdown for styling
+        else:
+            st.warning("אנא הקלד שאלה לפני קבלת תשובה..")
 
